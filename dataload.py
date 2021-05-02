@@ -83,8 +83,10 @@ def main(spark):
 
     train_path = 'train_encode.parquet'
     val_path = 'val_encode.parquet'
+    test_path='test_encode.parquet'
     train_encode = spark.read.parquet(train_path)
     val_encode = spark.read.parquet(val_path)
+    test_encode=spark.read.parquet(test_path)
     print('load success')
 
     t_v_user = val_encode.withColumnRenamed('user_i', 'user_i_').select('user_i_').distinct()
